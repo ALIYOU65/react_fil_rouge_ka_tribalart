@@ -1,0 +1,64 @@
+/* Styles généraux de la page */
+.container {
+    max-width: 960px;
+}
+
+.display-4 {
+    font-weight: 300;
+}
+
+.content-section {
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    margin-bottom: 2rem;
+}
+
+/* Styles pour les titres des sections */
+h2, h4 {
+    color: #333;
+    font-weight: 500;
+}
+
+/* Style pour le paragraphe d'introduction */
+.intro-text {
+  font-style: italic;
+  font-size: 1.1rem;
+  color: #555;
+  text-align: center;
+}
+
+/* Styles pour les listes d'informations */
+.data-list {
+    list-style-type: none; 
+    padding-left: 0;
+}
+
+.data-list li {
+    background-color: #f8f9fa;
+    margin-bottom: 15px;
+    padding: 20px;
+    border-left: 4px solid #007bff;
+    border-radius: 5px;
+    font-size: 1rem;
+    line-height: 1.6;
+    transition: transform 0.2s ease-in-out;
+}
+
+.data-list li:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.data-list li strong {
+    font-size: 1.1rem;
+    color: #0056b3;
+    display: block;
+    margin-bottom: 5px;
+}
+
+/* Style de la ligne de séparation */
+hr {
+    border-top: 1px solid #e0e0e0;
+}

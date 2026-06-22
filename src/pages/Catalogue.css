@@ -1,0 +1,101 @@
+/* En-tête du tableau */
+.table-header th {
+  color: blue;
+  background-color: white;
+  text-align: center;
+}
+
+/* Pagination boutons */
+.pagination-btn {
+  background-color: black;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.pagination-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Bouton "Lire plus" */
+.btn-link {
+  color: blue;
+  font-weight: bold;
+  text-decoration: underline;
+  cursor: pointer;
+  font-size: 0.8rem; /* Diminution de la taille de la police */
+}
+
+/* Cadres du tableau */
+.table-bordered th, .table-bordered td {
+  border-width: 3px !important;
+  border-color: #000000 !important;
+  text-align: center; /* Centrage des textes */
+  vertical-align: middle; /* Alignement vertical au milieu */
+}
+
+/* Bouton de pagination au milieu */
+.btn-light.border {
+  background-color: blue;
+  color: white;
+  border-color: blue !important;
+}
+
+/* Conteneur pour l'image et l'icône de zoom */
+.image-container {
+  position: relative;
+  display: inline-block;
+  cursor: zoom-in;
+}
+
+/* Images du tableau */
+.img-fluid {
+  max-height: 80px; /* Augmentation de la hauteur */
+  max-width: 80px;  /* Augmentation de la largeur */
+  object-fit: contain;
+}
+
+/* Icône de zoom (loupe) */
+.zoom-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border-radius: 50%;
+  padding: 5px;
+  font-size: 1.5rem;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.image-container:hover .zoom-icon {
+  opacity: 1;
+}
+
+/* Modal pour le zoom d'image */
+.modal-image {
+  max-width: 90vw;
+  max-height: 90vh;
+  display: block;
+  margin: auto;
+}
+
+/* Marge entre la pagination et le footer */
+.pagination-container {
+  margin-bottom: 50px;
+}
+
+/* Conteneur de tableau responsive, s'assure que le tableau remplit la largeur disponible */
+.table-responsive {
+  width: 100%;
+}
+
+/* Assurer que le tableau prend 100% de la largeur de son conteneur */
+.table {
+  width: 100% !important;
+}

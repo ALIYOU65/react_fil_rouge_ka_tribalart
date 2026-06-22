@@ -1,0 +1,108 @@
+/* Ensure the body takes full height and footer stays at bottom */
+/*html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1 0 auto; /* Allows main content to grow but not shrink below zero */
+/*} 
+
+.footer {
+  width: 100%;
+  padding: 20px 0;
+  background-color: #582900;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0; /* Prevents footer from shrinking */
+/*}
+
+.footer-container {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 40px;
+  text-align: center;
+}
+
+.footer-column {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.left-column, .right-column {
+  flex-direction: row;
+}
+
+.center-column {
+  flex-direction: column;
+}*/
+
+.footer {
+  width: 100%;
+  padding: 20px 0;
+  background-color: #582900;
+  color: white;
+}
+
+.footer-container {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 40px;
+  text-align: center;
+  gap: 185px;
+}
+
+.social_icons {
+  display: flex;
+  gap: 5px;
+  justify-content: center; 
+  align-items: center; 
+}
+
+.footer-column left-column, 
+.social_icons { 
+display: flex;
+ flex-direction: column; 
+align-items: center; 
+justify-content: center;
+ } 
+
+.footer-column center-column,
+.copyright { 
+display: flex;
+ flex-direction: column; 
+align-items: center; 
+justify-content: center;
+ } 
+
+.ecommerce_icons {
+  display: flex;
+  gap: 5px;
+  justify-content: center; 
+  align-items: center; 
+}
+ 
+.footer-column right-column
+.ecommerce_icons 
+{ 
+display: flex;
+ flex-direction: column; 
+align-items: center; 
+justify-content: center;
+ } 
