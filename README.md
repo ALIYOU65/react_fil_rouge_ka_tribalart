@@ -1,4 +1,4 @@
-🎨 KA.TRIBALART - Plateforme E-commerce d'Objets d'Art Africain
+# 🎨 KA.TRIBALART - Plateforme E-commerce d'Objets d'Art Africain
 
 ## 📌 Présentation
 
@@ -23,7 +23,7 @@ Il propose une gestion complète des articles, un système d’authentification 
 
 ## 🚀 Fonctionnalités principales
 
-### Espace Visiteur / Client
+### 👤 Espace Visiteur / Client
 - Navigation intuitive
 - Catalogue avec pagination et recherche
 - Fiche article détaillée (images multiples, description, prix, origine)
@@ -31,14 +31,14 @@ Il propose une gestion complète des articles, un système d’authentification 
 - Passation de commande
 - Simulation de paiement Stripe
 
-### Espace Admin
+### 🛠️ Espace Admin
 - CRUD complet sur les articles
 - Gestion des catégories
 - Gestion des commandes
 - Gestion des utilisateurs et rôles
 - Upload d’images
 
-### Authentification
+### 🔐 Authentification
 - Inscription / Connexion
 - Rôles : Admin / Client
 - Protection des routes (middleware)
@@ -60,80 +60,117 @@ Il propose une gestion complète des articles, un système d’authentification 
 
 ## 📁 Structure du projet
 
-### Backend (Node.js)
+### 🟢 Backend (Node.js)
 ```bash
-backend/
-├── controllers/          # article.controller.js, user.controller.js...
-├── models/               # article.model.js, user.model.js...
-├── routes/               # article.route.js...
-├── middlewares/          # authMiddleware.js, adminMiddleware.js
-├── validations/          # article.validation.js...
-├── uploads/              # Images uploadées
-├── db.js
+node_fil_rouge_ka_tribalart/
+├── controllers/             # article.controller.js, user.controller.js...
+├── db/
+│   └── db.js
+├── middlewares/             # authMiddleware.js, adminMiddleware.js, multer.js
+├── models/                  # article.model.js, user.model.js...
+├── routes/                  # article.route.js...
+├── uploads/                 # Images uploadées
+├── validations/             # article.validation.js...
+├── .env
+├── package.json
 └── server.js
 
-### Frontend (React)
+```
+
+### 🔵 Frontend (React)
 ```bash
-frontend/
-├── src/
-│   ├── components/       # Header, Footer, FormulaireArticle...
-│   ├── pages/            # PageAccueil, PageCatalogue, PageArticle...
-│   ├── contexts/         # AuthContext, PanierContext
-│   ├── assets/
-│   └── App.js
+react_fil_rouge_ka_tribalart/
 ├── public/
-│   └── images/
-└── package.json
+│   ├── images/              # Captures d'écran et images du site
+│   └── vite.svg
+├── src/
+│   ├── assets/
+│   ├── components/          # Header, Footer, etc.
+│   ├── contexts/            # AuthContext.jsx, PanierContext.jsx
+│   ├── pages/               # PageAccueil, PageCatalogue, PageArticle...
+│   ├── App.jsx
+│   ├── App.css
+│   ├── index.css
+│   └── main.jsx
+├── index.html
+├── package.json
+├── vite.config.js
+└── README.md
+
+```
 
 ## 📷 Captures d'écran
 
-### Page d'accueil
+### 🏠 Page d'accueil
 ![Accueil](public/images/accueil.png)
 
-### Catalogue des articles
+### 📋 Catalogue des articles
 ![Catalogue](public/images/catalogue.png)
 
-### Fiche Article détaillée
+### 🖼️ Fiche Article détaillée
 ![Fiche Article](public/images/article.png)
 
-### Panier & Commandes
-![Panier](public/images/panier.png)
+### 🛒 Gestion des Paniers
+![Gestion des Paniers](public/images/panier.png)
 
-💻 Installation et Lancement
 
-1. Cloner le projet
+---
 
-git clone https://github.com/ALIYOU65/react_fil_ka_tribalart.git
-cd react_fil_ka_tribalart
+## 💻 Installation et Lancement
 
-git clone https://github.com/ALIYOU65/node_fil_ka_tribalart.git
-cd node_fil_ka_tribalart
+### 1. Cloner les projets
 
-2. Backend
+```bash
+# Frontend
+git clone https://github.com/ALIYOU65/react_fil_rouge_ka_tribalart.git
 
-Bashcd backend
+# Backend
+git clone https://github.com/ALIYOU65/node_fil_rouge_ka_tribalart.git
+```
+
+### 2. Installer et lancer le backend
+
+```bash
+cd node_fil_rouge_ka_tribalart
 npm install
-# Créer un .env avec MONGO_URI, JWT_SECRET, STRIPE_SECRET_KEY...
+```
+
+Créer un fichier `.env` :
+
+```env
+MONGO_URI=...
+JWT_SECRET=...
+STRIPE_SECRET_KEY=...
+```
+
+Puis lancer le serveur :
+
+```bash
 npm run dev
+```
 
-3. Frontend
+### 3. Installer et lancer le frontend
 
-Bashcd ../frontend
+```bash
+cd react_fil_rouge_ka_tribalart
 npm install
 npm run dev
+```
 
-📈 Améliorations prévues
+## 📈 Améliorations prévues
 
-Paiement Stripe en production
-Système d’avis et notation
-Recherche avancée + filtres multicritères
-Dashboard Admin avec statistiques
-Déploiement complet (Vercel + Render/Railway)
+- ✅ Paiement Stripe en mode production
+- ⭐ Système d'avis et de notation des articles
+- 🔎 Recherche avancée avec filtres multicritères
+- 📊 Tableau de bord administrateur avec statistiques
+- ☁️ Déploiement de l'application (Frontend : Vercel, Backend : Render ou Railway)
 
+---
 
-👨‍💻 Auteur
-KOUOTOU ALIYOU
+## 👨‍💻 Auteur
+
+**KOUOTOU ALIYOU**  
 Développeur Full Stack Web & Mobile
 
-📧 kouotou26@gmail.com
-🔗 GitHub
+📧 Email : ali3bakar@gmail.com  
+🔗 [GitHub](https://github.com/ALIYOU65)
