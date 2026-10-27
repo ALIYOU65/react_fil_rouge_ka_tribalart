@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useAuth } from '../contexts/AuthContext'; // Importation du hook useAuth
+import { useAuth } from '../contexts/AuthContext'; 
 import FormulaireArticle from './FormulaireArticle';
 import ListeArticles from './ListeArticles';
 import FormulaireModificationArticle from './FormulaireModificationArticle';
@@ -22,7 +22,7 @@ export default function PageArticles() {
   
   return (
     <div className="container mt-5">
-      <h1>Gestion des articles</h1>
+      <h1 className="text-center mb-4">Gestion des articles</h1>
       
       {/* Affichage conditionnel des formulaires pour les administrateurs */}
       {isAdmin ? (

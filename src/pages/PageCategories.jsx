@@ -19,7 +19,7 @@ export default function PageCategories() {
 
   return (
     <div className="container mt-5">
-      <h1>Gestion des catégories</h1>
+      <h1 className="text-center mb-4">Gestion des catégories</h1>
       <FormulaireCategorie
         categorieAEditer={categorieAEditer}
         onFormSubmit={gererSoumissionFormulaire}

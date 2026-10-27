@@ -55,7 +55,7 @@ export default function FormulaireCategorie({ categorieAEditer, onFormSubmit }) 
 
   return (
     <div className="container" style={{ maxWidth: "400px" }}>
-      <h2 className="text-center mb-4">{categorieAEditer ? 'Modifier la catégorie' : 'Créer une nouvelle catégorie'}</h2>
+      <h2 className="text-center mb-4" style={{ whiteSpace: 'nowrap' }}>{categorieAEditer ? 'Modifier la catégorie' : 'Créer une nouvelle catégorie'}</h2>
       <form onSubmit={handleSubmit}>
         <div className="mb-3">
           <label htmlFor="nom" className="form-label">Nom de la catégorie</label>

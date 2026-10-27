@@ -9,7 +9,7 @@ export default function PageLigneCommandes() {
 
   const gererSoumissionFormulaire = () => {
     setRafraichir(prev => !prev);
-    setLigneCommandeAEditer(null); // Cache le formulaire
+    setLigneCommandeAEditer(null); 
   };
 
   const onEditer = (ligneCommande) => {
@@ -22,7 +22,7 @@ export default function PageLigneCommandes() {
 
   return (
     <div className="container mt-5">
-      <h1>Gestion des Lignes de Commande</h1>
+      <h1 className="text-center mb-4">Gestion des Lignes de Commande</h1>
       
       {ligneCommandeAEditer ? (
         <FormulaireModificationLigneCommande 

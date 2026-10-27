@@ -43,8 +43,8 @@ export default function ListeLigneCommandes({ rafraichir, onEditer }) {
   }
   
   return (
-    <div className="mt-5">
-      <h2 className="mb-4">Liste des lignes de commande</h2>
+    <div className="mt-5 mb-5">
+      <h2 className="text-center mb-4">Liste des lignes de commande</h2>
       {lignes.length === 0 ? (
         <p>Aucune ligne de commande trouvée.</p>
       ) : (

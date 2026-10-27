@@ -44,7 +44,7 @@ export default function ListeCategories({ onEditer, onCategorieSupprimee, rafrai
   }
 
   return (
-    <div className="container mt-5">
+    <div className="container mt-5 mb-5 pb-5">
       <h2 className="text-center mb-4">Liste des catégories</h2>
       {categories.length === 0 ? (
         <p className="text-center">Aucune catégorie trouvée.</p>

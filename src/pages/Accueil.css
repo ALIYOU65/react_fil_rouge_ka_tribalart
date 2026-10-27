@@ -1,9 +1,9 @@
-/* --- Structure principale --- */
+/* Structure principale */
 .accueil-container {
   overflow-x: hidden;
 }
 
-/* --- Images principales (catégories) --- */
+/* Images principales (catégories) */
 .category-item {
   position: relative;
   display: inline-block;
@@ -20,7 +20,7 @@
   display: block;
 }
 
-/* --- Nom collé sur l’image (overlay) --- */
+/* Nom collé sur l’image (overlay) */
 .category-title {
   position: absolute;
   bottom: 5px;
@@ -35,18 +35,18 @@
   white-space: nowrap;
 }
 
-/* --- Bloc du haut (Masques, Têtes, Statues) --- */
+/* Bloc du haut (Masques, Têtes, Statues) */
 .categories-top {
   display: flex;
   justify-content: center;
-  gap: 490px; /* Increased gap for more spacing */
-  margin-bottom: 30px; /* espace avec la grande image */
+  gap: 490px; 
+  margin-bottom: 30px; 
 }
 
-/* --- Grande image centrale --- */
+/* Grande image centrale */
 .main-image {
   text-align: center;
-  margin-bottom: 40px; /* espace avec le footer */
+  margin-bottom: 40px; 
 }
 
 .main-image img {
@@ -56,16 +56,16 @@
   border: 3px solid #333;
 }
 
-/* --- Bloc du bas (Boucliers, Tissus, Tabourets) --- */
+/* Bloc du bas (Boucliers, Tissus, Tabourets) */
 .categories-bottom {
   display: flex;
   justify-content: center;
-  gap: 490px; /* Increased gap for more spacing */
+  gap: 490px; 
   margin-top: 30px;
-  margin-bottom: 40px; /* espace avec footer */
+  margin-bottom: 40px; 
 }
 
-/* --- Texte de présentation --- */
+/* Texte de présentation */
 .presentation-text {
    color: black; 
    font-weight: bold;

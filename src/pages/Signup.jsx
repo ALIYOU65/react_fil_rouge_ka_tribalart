@@ -61,7 +61,7 @@ export default function Signup() {
             {loading ? "Inscription en cours..." : "Créer mon compte"}
           </button>
         </form>
-        {message && <p className="mt-3 text-center">{message}</p>}
+        {message && <p className="mt-3 text-center" style={{color: message.includes('réussie') ? 'green' : 'red', fontWeight: 'bold',}}>{message}</p>}
       </div>
     </div>
   );
@@ -83,53 +83,3 @@ export default function Signup() {
 
 
 
-
-// import React, { useState } from "react";
-// import axios from "axios";
-
-// export default function Signup() {
-//   const [formData, setFormData] = useState({
-//     email: "",
-//     password: "",
-//     prenom: "",
-//     nom: "",
-//     role: "CLIENT", // valeur par défaut
-//   });
-
-//   const [message, setMessage] = useState("");
-
-//   const handleChange = (e) => {
-//     setFormData({ ...formData, [e.target.name]: e.target.value });
-//   };
-
-//   const handleSubmit = async (e) => {
-//     e.preventDefault();
-//     try {
-//       const res = await axios.post("http://localhost:3000/api/users/register", formData);
-//       setMessage("Inscription réussie !");
-//       console.log(res.data);
-//     } catch (error) {
-//       console.error(error.response?.data || error.message);
-//       setMessage("Erreur lors de l'inscription : " + (error.response?.data?.message || "Inconnue"));
-//     }
-//   };
-
-//   return (
-//     <div>
-//       <h2>Inscription</h2>
-//       <form onSubmit={handleSubmit}>
-//         <input type="text" name="prenom" placeholder="Prénom" onChange={handleChange} required />
-//         <input type="text" name="nom" placeholder="Nom" onChange={handleChange} />
-//         <input type="email" name="email" placeholder="Email" onChange={handleChange} required />
-//         <input type="password" name="password" placeholder="Mot de passe" onChange={handleChange} required />
-//         <select name="role" onChange={handleChange}>
-//           <option value="CLIENT">Client</option>
-//           <option value="VISITEUR">Visiteur</option>
-//           <option value="ADMIN">Admin</option>
-//         </select>
-//         <button type="submit">S'inscrire</button>
-//       </form>
-//       <p>{message}</p>
-//     </div>
-//   );
-// }

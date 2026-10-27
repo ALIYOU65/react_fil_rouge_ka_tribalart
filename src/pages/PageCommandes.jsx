@@ -22,7 +22,7 @@ export default function PageCommandes() {
 
   return (
     <div className="container mt-5">
-      <h1>Gestion des Commandes</h1>
+      <h1 className="text-center mb-4">Gestion des Commandes</h1>
       
       {commandeAEditer ? (
         <FormulaireModificationCommande 

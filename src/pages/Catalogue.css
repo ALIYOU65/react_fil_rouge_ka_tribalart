@@ -26,14 +26,14 @@
   font-weight: bold;
   text-decoration: underline;
   cursor: pointer;
-  font-size: 0.8rem; /* Diminution de la taille de la police */
+  font-size: 0.8rem; 
 }
 
 /* Cadres du tableau */
 .table-bordered th, .table-bordered td {
   border-width: 3px !important;
   border-color: #000000 !important;
-  text-align: center; /* Centrage des textes */
+  text-align: center;
   vertical-align: middle; /* Alignement vertical au milieu */
 }
 
@@ -53,8 +53,8 @@
 
 /* Images du tableau */
 .img-fluid {
-  max-height: 80px; /* Augmentation de la hauteur */
-  max-width: 80px;  /* Augmentation de la largeur */
+  max-height: 80px; 
+  max-width: 80px;  
   object-fit: contain;
 }
 

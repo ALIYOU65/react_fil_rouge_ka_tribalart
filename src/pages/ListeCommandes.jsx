@@ -43,8 +43,8 @@ export default function ListeCommandes({ rafraichir, onEditer }) {
   }
   
   return (
-    <div className="mt-5">
-      <h2 className="mb-4">Liste des commandes</h2>
+    <div className="mt-5 mb-5">
+      <h2 className="text-center mb-4">Liste des commandes</h2>
       {commandes.length === 0 ? (
         <p>Aucune commande trouvée.</p>
       ) : (

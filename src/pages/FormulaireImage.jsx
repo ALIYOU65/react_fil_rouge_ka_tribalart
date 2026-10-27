@@ -4,7 +4,7 @@ import axios from 'axios';
 const FormulaireImage = ({ onFormSubmit }) => {
   const [nom, setNom] = useState('');
   const [alt, setAlt] = useState('');
-  const [fichiers, setFichiers] = useState([{ id: 0, file: null }]); // Utilisez un tableau pour les fichiers
+  const [fichiers, setFichiers] = useState([{ id: 0, file: null }]); 
   const [message, setMessage] = useState('');
 
   const handleFileChange = (e, index) => {
@@ -57,7 +57,7 @@ const FormulaireImage = ({ onFormSubmit }) => {
 
   return (
     <form onSubmit={handleSubmit} className="p-4 border rounded shadow-sm">
-      <h2 className="mb-4">Créer une nouvelle image</h2>
+      <h2 className="text-center mb-4">Créer une nouvelle image</h2>
       <div className="mb-3">
         <label htmlFor="nom" className="form-label">Nom de l'image</label>
         <input

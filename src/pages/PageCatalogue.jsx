@@ -120,35 +120,37 @@ export default function PageCatalogue() {
                     </div>
                   </td>
                   <td>
-                    <div className="d-grid gap-2">
-                      {/* Tous les rôles ont accès à "Voir" */}
-                      <button
-                        className="btn btn-primary btn-sm"
-                        onClick={() => handleVoirClick(article._id)}
-                      >
-                        Voir
-                      </button>
+               <div className="d-grid gap-2">
+              <button
+              className="btn btn-primary btn-sm"
+              onClick={() => handleVoirClick(article._id)}
+              >
+               Voir
+             </button>
 
-                      {/* Seul ADMIN a accès à Modifier et Supprimer */}
-                      {isAdmin && (
-                        <>
-                          <button
-                            className="btn btn-warning btn-sm"
-                            onClick={() => handleModifierClick(article._id)}
-                          >
-                            Modifier
-                          </button>
-                          <button
-                            className="btn btn-danger btn-sm"
-                            onClick={() => handleDelete(article._id)}
-                          >
-                            Supprimer
-                          </button>
-                        </>
-                      )}
-                    </div>
-                  </td>
-                </tr>
+             {article.statut === "Vendu" && (
+            <span className="badge bg-danger mt-1">Vendu</span>
+            )}
+
+             {isAdmin && (
+             <>
+             <button
+             className="btn btn-warning btn-sm"
+              onClick={() => handleModifierClick(article._id)}
+               >
+               Modifier
+               </button>
+               <button
+              className="btn btn-danger btn-sm"
+               onClick={() => handleDelete(article._id)}
+                >
+               Supprimer
+              </button>
+             </>
+           )}
+           </div>
+            </td>
+             </tr>
               ))
             ) : (
               <tr>

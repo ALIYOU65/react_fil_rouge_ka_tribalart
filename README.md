@@ -102,16 +102,20 @@ react_fil_rouge_ka_tribalart/
 ## 📷 Captures d'écran
 
 ### 🏠 Page d'accueil
-![Accueil](public/images/accueil.png)
+![Accueil](public/images/PageAccueil.png)
 
 ### 📋 Catalogue des articles
-![Catalogue](public/images/catalogue.png)
+![Catalogue](public/images/PageCatalogue.png)
 
 ### 🖼️ Fiche Article détaillée
-![Fiche Article](public/images/article.png)
+![Fiche Article](public/images/PageArticle.png)
 
-### 🛒 Gestion des Paniers
-![Gestion des Paniers](public/images/panier.png)
+### 👥 Gestion des Utilisateurs
+![Gestion des Utilisateurs](public/images/PageUtilisateurs.png)
+
+### 🎭 Gestion des articles
+![Gestion des Articles](public/images/PageArticles.png)
+
 
 
 ---

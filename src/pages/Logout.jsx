@@ -23,25 +23,3 @@ export default function Logout() {
 
 
 
-
-
-// import { useEffect } from "react";
-// import { useNavigate } from "react-router-dom";
-
-// export default function Logout() {
-//   const navigate = useNavigate();
-
-//   useEffect(() => {
-//     localStorage.removeItem("token");
-//     localStorage.removeItem("role");
-
-//     navigate("/login");
-//   }, [navigate]);
-
-//   return (
-//     <div className="text-center mt-5">
-//       <h3>Déconnexion en cours...</h3>
-//     </div>
-//   );
-// }
-

@@ -54,8 +54,8 @@ const ListeArticles = ({ rafraichirListe, onEditer, onArticleSupprimee }) => {
   };
 
   return (
-    <div className="mt-5">
-      <h2 className="mb-4">Liste des articles</h2>
+    <div className="mt-5 mb-5">
+      <h2 className="text-center mb-4">Liste des articles</h2>
       {message && <div className="alert alert-info">{message}</div>}
       <div className="row">
         {articles.length > 0 ? (
@@ -99,35 +99,40 @@ const ListeArticles = ({ rafraichirListe, onEditer, onArticleSupprimee }) => {
                       )}
                     </div>
                   </div>
-                  <div className="mt-3">
-                    {/* Les boutons s'affichent uniquement si l'utilisateur est un ADMIN */}
-                    {isAdmin && (
-                      <>
-                        <button
-                          onClick={() => onEditer(article)}
-                          className="btn btn-warning btn-sm me-2"
-                        >
-                          Modifier
-                        </button>
-                        <button
-                          onClick={() => handleDelete(article._id)}
-                          className="btn btn-danger btn-sm"
-                        >
-                          Supprimer
-                        </button>
-                      </>
-                    )}
-                  </div>
-                </div>
-              </div>
-            </div>
-          ))
+                  
+                <div className="mt-3">
+             {isAdmin && (
+            <>
+          <button
+        onClick={() => onEditer(article)}
+        className="btn btn-warning btn-sm me-2"
+        >
+        Modifier
+        </button>
+        <button
+        onClick={() => handleDelete(article._id)}
+        className="btn btn-danger btn-sm me-2"
+       >
+        Supprimer
+      </button>
+      </>
+      )}
+
+      {article.statut === "Vendu" && (
+       <span className="badge bg-danger">Vendu</span>
+       )}
+       </div>
+
+        </div>
+        </div>
+        </div>
+        ))
         ) : (
           <p>Aucun article trouvé.</p>
         )}
-      </div>
-    </div>
-  );
-};
+        </div>
+        </div>
+      );
+     };
 
-export default ListeArticles;
+      export default ListeArticles;

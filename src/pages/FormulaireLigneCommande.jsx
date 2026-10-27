@@ -52,7 +52,7 @@ export default function FormulaireLigneCommande({ onFormSubmit }) {
     
     return (
         <form onSubmit={handleSubmit} className="p-4 border rounded shadow-sm">
-            <h2 className="mb-4">Créer une nouvelle ligne de commande</h2>
+            <h2 className="text-center mb-4">Créer une nouvelle ligne de commande</h2>
             <div className="mb-3">
                 <label className="form-label">Quantité</label>
                 <input type="number" className="form-control" name="quantite" value={formData.quantite} onChange={handleChange} required />

@@ -12,6 +12,7 @@ export default function PageArticle() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [isZoomOpen, setIsZoomOpen] = useState(false);
 
   const { token, userRole } = useAuth();
   const { mettreAJourPanier } = usePanier();
@@ -59,33 +60,53 @@ export default function PageArticle() {
     }
   };
 
-  const achatImmediat = async () => {
-    if (!token) {
-      alert("Veuillez vous connecter pour procéder à l'achat.");
-      navigate("/login");
-      return;
+ const achatImmediat = async () => {
+  console.log("Token actuel :", token);
+  console.log("UserRole :", userRole);
+
+  if (!token) {
+    alert("Veuillez vous connecter pour procéder à l'achat.");
+    navigate("/login");
+    return;
+  }
+
+  if (userRole === "ADMIN") {
+    alert("Les administrateurs ne peuvent pas faire d'achats.");
+    return;
+  }
+
+  try {
+    const config = {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json"
+      }
+    };
+
+    console.log("Config envoyée :", config);   
+
+    const response = await axios.post(
+      `${API_URL}/commandes/achat-immediat`,
+      {
+        articleId: article._id,
+        quantite: 1
+      },
+      config
+    );
+
+    console.log("Réponse du serveur :", response.data); 
+
+    if (response.data?.url) {
+      window.location.href = response.data.url;
+    } else {
+      alert("Erreur : impossible de récupérer l'URL de paiement.");
     }
 
-    if (userRole === "ADMIN") {
-      alert("Les administrateurs ne peuvent pas faire d'achats.");
-      return;
-    }
-
-    try {
-      await axios.post(
-        `${API_URL}/commandes/achat-immediat`,
-        { articleId: article._id },
-        {
-          headers: { Authorization: `Bearer ${token}` },
-        }
-      );
-      alert("Redirection vers la page de paiement...");
-      navigate("/paiement");
-    } catch (err) {
-      console.error("Erreur lors de l'achat immédiat:", err);
-      alert("Erreur lors de la création de la commande.");
-    }
-  };
+  } catch (err) {
+    console.error("Erreur complète :", err.response?.data || err);
+    alert(err.response?.data?.message || "Erreur lors de la création de la commande.");
+  }
+};
 
   if (loading) {
     return <div className="text-center mt-5">Chargement de l'article...</div>;
@@ -124,70 +145,137 @@ export default function PageArticle() {
           </div>
 
           {/* Grande image */}
-          <div className="flex-grow-1 d-flex justify-content-center align-items-center position-relative">
-            {images.length > 0 && (
-              <img
-                src={images[currentImageIndex].url}
-                alt={article.nom}
-                className="rounded shadow"
-                style={{
-                  height: "250px", 
-                  maxWidth: "100%",
-                  objectFit: "contain",
-                }}
-              />
-            )}
+        <div className="flex-grow-1 d-flex justify-content-center align-items-center position-relative">
+        {images.length > 0 && (
+        <div style={{ position: 'relative', cursor: 'zoom-in' }}>
+        <img
+        src={images[currentImageIndex].url}
+        alt={article.nom}
+        className="rounded shadow"
+        style={{
+          height: '250px',
+          maxWidth: '100%',
+          objectFit: 'contain',
+        }}
+        onClick={() => setIsZoomOpen(true)}
+      />
+      {/* Icône loupe */}
+      <div
+        onClick={() => setIsZoomOpen(true)}
+        style={{
+          position: 'absolute',
+          bottom: '10px',
+          right: '10px',
+          backgroundColor: 'rgba(0,0,0,0.6)',
+          color: 'white',
+          borderRadius: '50%',
+          width: '36px',
+          height: '36px',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          cursor: 'pointer',
+          fontSize: '18px',
+        }}
+        title="Agrandir"
+      >
+        🔍
+      </div>
+    </div>
+  )}
 
-            {/* Flèches navigation */}
-            {images.length > 1 && (
-              <>
-                {/* Flèche gauche */}
-                <button
-                  className="position-absolute top-50 start-0 translate-middle-y"
-                  style={{
-                    backgroundColor: "#ADD8E6",
-                    border: "none",
-                    borderRadius: "50%", // bouton rond
-                    width: "40px",
-                    height: "40px",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                  }}
-                  onClick={() =>
-                    setCurrentImageIndex(
-                      (prevIndex) =>
-                        (prevIndex - 1 + images.length) % images.length
-                    )
-                  }
-                >
-                  ‹
-                </button>
-
-                {/* Flèche droite */}
-                <button
-                  className="position-absolute top-50 end-0 translate-middle-y"
-                  style={{
-                    backgroundColor: "#ADD8E6",
-                    border: "none",
-                    borderRadius: "50%", // bouton rond
-                    width: "40px",
-                    height: "40px",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                  }}
-                  onClick={() =>
-                    setCurrentImageIndex(
-                      (prevIndex) => (prevIndex + 1) % images.length
-                    )
-                  }
-                >
-                  ›
-                </button>
-              </>
-            )}
-          </div>
+  {/* Flèches navigation */}
+  {images.length > 1 && (
+    <>
+      <button
+        className="position-absolute top-50 start-0 translate-middle-y"
+        style={{
+          backgroundColor: '#ADD8E6',
+          border: 'none',
+          borderRadius: '50%',
+          width: '40px',
+          height: '40px',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}
+        onClick={() =>
+          setCurrentImageIndex(
+            (prevIndex) => (prevIndex - 1 + images.length) % images.length
+          )
+        }
+      >
+        ‹
+      </button>
+      <button
+        className="position-absolute top-50 end-0 translate-middle-y"
+        style={{
+          backgroundColor: '#ADD8E6',
+          border: 'none',
+          borderRadius: '50%',
+          width: '40px',
+          height: '40px',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}
+        onClick={() =>
+          setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length)
+        }
+      >
+        ›
+      </button>
+      </>
+    )}
+     </div>
+          {/* Lightbox / zoom */}
+    {isZoomOpen && images.length > 0 && (
+     <div
+     onClick={() => setIsZoomOpen(false)}
+      style={{
+      position: 'fixed',
+      top: 0,
+      left: 0,
+      right: 0,
+      bottom: 0,
+      backgroundColor: 'rgba(0,0,0,0.85)',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      zIndex: 9999,
+      cursor: 'zoom-out',
+    }}
+    >
+    <img
+      src={images[currentImageIndex].url}
+      alt={article.nom}
+      style={{
+        maxHeight: '90vh',
+        maxWidth: '90vw',
+        objectFit: 'contain',
+        borderRadius: '8px',
+      }}
+      onClick={(e) => e.stopPropagation()}
+      />
+      <button
+      onClick={() => setIsZoomOpen(false)}
+      style={{
+        position: 'absolute',
+        top: '20px',
+        right: '30px',
+        background: 'white',
+        border: 'none',
+        borderRadius: '50%',
+        width: '40px',
+        height: '40px',
+        fontSize: '22px',
+        cursor: 'pointer',
+      }}
+      >
+      ×
+      </button>
+      </div>
+     )}
         </div>
 
         {/* Colonne droite (fiche produit + boutons) */}
@@ -227,41 +315,48 @@ export default function PageArticle() {
               </p>
             </div>
 
-            {/* Boutons affichés seulement pour client connecté */}
-            {token && userRole !== "ADMIN" && (
-              <div className="d-grid gap-3 mt-4">
-                <button
-                  className="btn"
-                  style={{
-                    backgroundColor: "#2563EB",
-                    color: "white",
-                    borderRadius: "20px",
-                    padding: "10px",
-                  }}
-                  onClick={ajouterAuPanier}
-                >
-                  Ajouter au panier
-                </button>
-                <button
-                  className="btn"
-                  style={{
-                    backgroundColor: "#2563EB",
-                    color: "white",
-                    borderRadius: "20px", 
-                    padding: "10px",
-                  }}
-                  onClick={achatImmediat}
-                >
-                  Achat immédiat
-                </button>
-              </div>
-            )}
-          </div>
+          {token && userRole !== "ADMIN" && (
+          <div className="d-grid gap-3 mt-4">
+          {article.statut === "Vendu" ? (
+          <div className="alert alert-danger text-center fw-bold">
+            Cet article a déjà été vendu
+         </div>
+        ) : (
+      <>
+        <button
+          className="btn"
+          style={{
+            backgroundColor: "#2563EB",
+            color: "white",
+            borderRadius: "20px",
+            padding: "10px",
+          }}
+          onClick={ajouterAuPanier}
+        >
+          Ajouter au panier
+        </button>
+        <button
+          className="btn"
+          style={{
+            backgroundColor: "#2563EB",
+            color: "white",
+            borderRadius: "20px",
+            padding: "10px",
+          }}
+          onClick={achatImmediat}
+          >
+            Achat immédiat
+           </button>
+          </>
+        )}
         </div>
+        )}
+        </div>
+        </div>
+       </div>
       </div>
-    </div>
-  );
-}
+    );
+    }
 
 
 
